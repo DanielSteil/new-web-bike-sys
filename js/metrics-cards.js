@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function fetchMetrics() {
         try {
-            const response = await fetch('https://api-bike-sys.herokuapp.com/api/v1/services/count');
+            const response = await fetch('https://api-bike-sys.herokuapp.com/api/v1/services/cards');
             if (!response.ok) {
                 throw new Error('Failed to fetch metrics');
             }
@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateMetrics(data) {
-        servicesWeek.textContent = data.servicesDay;
-        servicesMonth.textContent = data.servicesWeek;
-        monthlyProfit.textContent = `R$ ${data.servicesMonth.toFixed(2)}`;
-        activeCustomers.textContent = data.servicesDay;
+        servicesWeek.textContent = data.servicesWeek;
+        servicesMonth.textContent = data.servicesMonth;
+        monthlyProfit.textContent = `R$ ${data.totalAmountMonth.toFixed(2)}`;
+        activeCustomers.textContent = data.servicesWeek;
 
         // Update ARIA live regions for accessibility
         servicesWeek.setAttribute('aria-live', 'polite');
