@@ -23,13 +23,18 @@ document.addEventListener('DOMContentLoaded', function() {
         servicesWeek.textContent = data.servicesWeek;
         servicesMonth.textContent = data.servicesMonth;
         monthlyProfit.textContent = `R$ ${data.totalAmountMonth.toFixed(2)}`;
-        activeCustomers.textContent = data.servicesWeek;
+        activeCustomers.textContent = formatDate(data.dateLastService);
 
         // Update ARIA live regions for accessibility
         servicesWeek.setAttribute('aria-live', 'polite');
         servicesMonth.setAttribute('aria-live', 'polite');
         monthlyProfit.setAttribute('aria-live', 'polite');
         activeCustomers.setAttribute('aria-live', 'polite');
+    }
+
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit'};
+        return new Date(dateString).toLocaleString('pt-BR', options);
     }
 
     fetchMetrics();
