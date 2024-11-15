@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function fetchRecentOrders() {
         try {
             recentOrdersSection.setAttribute('aria-busy', 'true');
-            const response = await fetch('/api/recent-orders'); // Replace with your actual API endpoint
+            const response = await fetch('https://api-bike-sys.herokuapp.com/api/v1/services/lasts?limit=7'); // Replace with your actual API endpoint
             if (!response.ok) {
                 throw new Error('Failed to fetch recent orders');
             }
@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${order.id}</td>
-                <td>${escapeHtml(order.customerName)}</td>
-                <td>${escapeHtml(order.bikeName)}</td>
-                <td>${formatDate(order.date)}</td>
-                <td>R$ ${order.total.toFixed(2)}</td>
+                <td>${escapeHtml(order.clientName)}</td>
+                <td>${escapeHtml(order.clientBike)}</td>
+                <td>${formatDate(order.serviceDate)}</td>
+                <td>R$ ${order.totalAmount.toFixed(2)}</td>
                 <td>
                     <button class="expand-button" aria-label="Expand order details">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-arrows-angle-expand" viewBox="0 0 16 16">
