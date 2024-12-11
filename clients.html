@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BikeSys</title>
+    <title>BikeSys - Clientes</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,56 +58,81 @@
                 <h1>Dream BikeShop</h1>
             </div>
         </header>
-        <main>
-            <h1 class="dashboard-title text-2xl font-bold">Dashboard</h1>
-            <div id="metrics-grid" class="metrics-grid">
-                <div class="metric-card" id="services-week">
-                    <h3>Serviços na Semana</h3>
-                    <p>Carregado...</p>
-                </div>
-                <div class="metric-card" id="services-month">
-                    <h3>Serviços no Mês</h3>
-                    <p>Carregado...</p>
-                </div>
-                <div class="metric-card" id="monthly-profit">
-                    <h3>Lucro Mensal</h3>
-                    <p>Carregado...</p>
-                </div>
-                <div class="metric-card" id="active-customers">
-                    <h3>Data Ultimo Serviço</h3>
-                    <p>Carregado...</p>
+        <main class="p-4">
+            <div class="flex justify-between items-center mb-4">
+                <h1 class="dashboard-title text-2xl font-bold">Clientes</h1>
+                <div class="flex space-x-4">
+                    <div class="actions">
+                        <input type="text" id="client-name-filter" placeholder="Nome cliente">
+                        <button id="new-client-btn" class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                            Novo Cliente
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="recent-orders">
-                <h2>Ultimos Serviços</h2>
-                <table>
-                    <thead>
+            <div id="loading" class="text-center py-4 hidden">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+                <p class="mt-2">Carregando...</p>
+            </div>
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                <table id="client-table" class="min-w-full">
+                    <thead class="bg-gray-200 text-gray-700">
                         <tr>
-                            <th>Id</th>
-                            <th>Cliente</th>
-                            <th>Bicicleta</th>
-                            <th>Data</th>
-                            <th>Total</th>
-                            <th><span class="sr-only">Ações</span></th>
+                            <th class="py-3 px-4 text-left">Nome</th>
+                            <th class="py-3 px-4 text-left">Número</th>
+                            <th class="py-3 px-4 text-left">Bicicletas</th>
+                            <th class="py-3 px-4 text-right">Ações</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <!-- Table body will be populated by JavaScript -->
-                    </tbody>
+                    <tbody id="clients-table-body"></tbody>
                 </table>
+            </div>
+            <div class="flex justify-between items-center mt-4">
+                <button id="prev-page" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Anterior</button>
+                <span id="page-info">Página <span id="current-page">1</span></span>
+                <button id="next-page" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Próxima</button>
             </div>
         </main>
     </div>
-    <div id="service-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
-        <div class="bg-white p-8 rounded-lg max-w-2xl w-full mx-4">
-            <h2 id="modal-title" class="text-2xl font-bold mb-4">Service Details</h2>
-            <div id="modal-content"></div>
-            <button id="close-modal" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                Voltar
-            </button>
+    <div id="client-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="client-modal-title">Novo Cliente</h2>
+            <form id="client-form">
+                <input type="hidden" id="client-id">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="number">Número</label>
+                    <input type="tel" id="number" required>
+                </div>
+                <div class="form-group">
+                    <label for="client-bikes">Bicicleta</label>
+                    <div id="bikes-container"></div>
+                    <button type="button" id="add-bike-btn" class="btn btn-secondary">
+                        <i data-lucide="plus"></i> Nova
+                    </button>
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="cancel-client" class="btn btn-secondary">Voltar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
         </div>
     </div>
-    <script src="js/metrics-cards.js"></script>
-    <script src="js/recent-orders.js"></script>
+
+    <div id="delete-confirmation-modal" class="modal">
+        <div class="modal-content">
+            <h2>Confirm Deletion</h2>
+            <p>Are you sure you want to delete this client?</p>
+            <div class="form-actions">
+                <button id="cancel-delete" class="btn btn-secondary">Cancel</button>
+                <button id="confirm-delete" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/clients.js"></script>
 </body>
 </html>

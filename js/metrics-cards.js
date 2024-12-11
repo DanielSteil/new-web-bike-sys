@@ -5,9 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const monthlyProfit = document.querySelector('#monthly-profit p');
     const activeCustomers = document.querySelector('#active-customers p');
 
+    // const serverUrl = "https://api-bike-sys.herokuapp.com";
+    const serverUrl = "http://localhost:9004";
+
     async function fetchMetrics() {
         try {
-            const response = await fetch('https://api-bike-sys.herokuapp.com/api/v1/services/cards');
+            const response = await fetch(`${serverUrl}/api/v1/services/cards`);
             if (!response.ok) {
                 throw new Error('Failed to fetch metrics');
             }
@@ -22,8 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateMetrics(data) {
         servicesWeek.textContent = data.servicesWeek;
         servicesMonth.textContent = data.servicesMonth;
-        monthlyProfit.textContent = `R$ ${data.totalAmountMonth.toFixed(2)}`;
-        activeCustomers.textContent = formatDate(data.dateLastService);
+        monthlyProfit.textContent = data.totalAmountMonth != null ? `R$ ${data.totalAmountMonth.toFixed(2)}` : "R$ 0";
+        activeCustomers.textContent = data.dateLastService != null ? formatDate(data.dateLastService) : "----";
 
         // Update ARIA live regions for accessibility
         servicesWeek.setAttribute('aria-live', 'polite');
@@ -33,8 +36,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function formatDate(dateString) {
-        const options = { year: 'numeric', month: '2-digit', day: '2-digit'};
-        return new Date(dateString).toLocaleString('pt-BR', options);
+        const data = new Date(dateString);
+        const year = data.getFullYear();
+        const month = data.getMonth()+1;
+        const day = ("0" + data.getDate()).slice(-2)
+        return `${day}/${month}/${year}`;
     }
 
     fetchMetrics();

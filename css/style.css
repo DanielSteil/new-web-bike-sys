@@ -19,8 +19,9 @@ body {
     font-weight: 500;
     font-style: normal;
     width: 60px;
-    background-color: #f0f0f0;
-    border-right: 1px solid #ddd;
+    background-color: #023FCA;
+    border-right: 1px solid #02309A;
+    color: #ffff;
     display: flex;
     flex-direction: column;
     transition: width 0.3s ease;
@@ -31,7 +32,7 @@ body {
 }
 .sidebar-header {
     padding: 1rem;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #02309A;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -55,7 +56,7 @@ body {
     overflow: hidden;
 }
 .sidebar-footer {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #02309A;
 }
 .sidebar-menu {
     list-style-type: none;
@@ -66,12 +67,12 @@ body {
     gap: 0.5rem;
     padding: 0.75rem 1rem;
     text-decoration: none;
-    color: #333;
+    color: #ffff;
     transition: background-color 0.3s;
     white-space: nowrap;
 }
 .sidebar-menu a:hover {
-    background-color: #e0e0e0;
+    background-color: #2E68EE;
 }
 .sidebar-menu svg {
     width: 1.5rem;
@@ -206,4 +207,181 @@ th {
     .header {
         flex-wrap: wrap;
     }
+}
+
+/* Additional styles for stock page */
+.stock-item-row:hover {
+    background-color: #f8f8f8;
+}
+
+#stock-table th, #stock-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+#stock-table th {
+    background-color: #f3f4f6;
+    font-weight: 600;
+}
+
+#stock-table tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.action-button {
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-button {
+    color: #3b82f6;
+}
+
+.edit-button:hover {
+    background-color: #eff6ff;
+}
+
+.remove-button {
+    color: #ef4444;
+}
+
+.remove-button:hover {
+    background-color: #fef2f2;
+}
+
+.actions-cell {
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Additional styles for client page */
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+#client-name-filter {
+    flex-grow: 1;
+    margin-right: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+#clients-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#clients-table th,
+#clients-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+#clients-table th {
+    background-color: #f8fafc;
+    font-weight: 600;
+}
+
+.client-row:hover {
+    background-color: #f1f5f9;
+}
+
+.action-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    margin-left: 0.5rem;
+}
+
+.edit-button {
+    color: #3b82f6;
+}
+
+.delete-button {
+    color: #ef4444;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+#bikes-container {
+    margin-bottom: 0.5rem;
+}
+
+.bike-input {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.bike-input input {
+    flex-grow: 1;
+}
+
+.remove-bike-btn {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
 }
