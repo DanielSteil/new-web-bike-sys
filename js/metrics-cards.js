@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const data = new Date(dateString);
         const year = data.getFullYear();
         const month = data.getMonth()+1;
-        const day = ("0" + data.getDate()).slice(-2)
+        const day = ("0" + (data.getDate() + 1)).slice(-2)
         return `${day}/${month}/${year}`;
     }
 

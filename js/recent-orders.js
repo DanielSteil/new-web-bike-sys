@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
         orders.records.forEach(order => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${order.id}</td>
                 <td>${escapeHtml(order.bike.client.name)}</td>
                 <td>${escapeHtml(order.bike.model)}</td>
                 <td>${formatDate(order.serviceDate)}</td>
@@ -121,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const data = new Date(dateString);
         const year = data.getFullYear();
         const month = data.getMonth()+1;
-        const day = ("0" + data.getDate()).slice(-2)
+        const day = ("0" + (data.getDate() + 1)).slice(-2)
         return `${day}/${month}/${year}`;
     }
 
