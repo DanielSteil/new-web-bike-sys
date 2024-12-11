@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const cancelNewClientButton = document.getElementById('cancel-new-client');
     const createNewClientButton = document.getElementById('create-new-client');
 
-    // const serverUrl = "https://api-bike-sys.herokuapp.com";
-    const serverUrl = "http://localhost:9004";
+    const serverUrl = "https://api-bike-sys.herokuapp.com";
+    // const serverUrl = "http://localhost:9004";
 
     let currentPage = 0;
     const pageSize = 10; // Number of items per page
@@ -407,7 +407,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const data = new Date(dateString);
         const year = data.getFullYear();
         const month = data.getMonth()+1;
-        const day = ("0" + data.getDate()).slice(-2)
+        const day = ("0" + (data.getDate() + 1)).slice(-2)
         const options = { year: 'numeric', month: '2-digit', day: '2-digit'};
         // return new Date(dateString).toLocaleString(options, {timeZone: 'UTC'});
         return `${day}-${month}-${year}`;

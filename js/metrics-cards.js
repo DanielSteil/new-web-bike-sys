@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const monthlyProfit = document.querySelector('#monthly-profit p');
     const activeCustomers = document.querySelector('#active-customers p');
 
-    // const serverUrl = "https://api-bike-sys.herokuapp.com";
-    const serverUrl = "http://localhost:9004";
+    const serverUrl = "https://api-bike-sys.herokuapp.com";
+    // const serverUrl = "http://localhost:9004";
 
     async function fetchMetrics() {
         try {

@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const cancelDeleteBtn = document.getElementById('cancel-delete');
     let itemToDelete = null;
     
-    // const serverUrl = "https://api-bike-sys.herokuapp.com";
-    const serverUrl = "http://localhost:9004";
+    const serverUrl = "https://api-bike-sys.herokuapp.com";
+    // const serverUrl = "http://localhost:9004";
 
     let currentPage = 0;
     let totalPages = 1;

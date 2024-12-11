@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalContent = document.getElementById('modal-content');
     const closeModal = document.getElementById('close-modal');
 
-    // const serverUrl = "https://api-bike-sys.herokuapp.com";
-    const serverUrl = "http://localhost:9004";
+    const serverUrl = "https://api-bike-sys.herokuapp.com";
+    // const serverUrl = "http://localhost:9004";
 
     async function fetchRecentOrders() {
         try {
