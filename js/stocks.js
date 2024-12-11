@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const stockItem = Object.fromEntries(formData.entries());
         stockItem.amount = parseInt(stockItem.amount);
 
-        const url = stockItem.id ? `${serverUrl}/api/v1/stocks/${stockItem.id}` : '/api/v1/stocks';
+        const url = stockItem.id ? `${serverUrl}/api/v1/stocks/${stockItem.id}` : `${serverUrl}/api/v1/stocks`;
         const method = stockItem.id ? 'PATCH' : 'POST';
 
         fetch(url, {
