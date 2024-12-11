@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // const serverUrl = "http://localhost:9004";
 
     let currentPage = 0;
-    const pageSize = 10; // Number of items per page
+    const pageSize = 9; // Number of items per page
     let selectedClientId = null;
     let clientSelect = null;
 
